@@ -14,14 +14,47 @@
 
 <script>
 
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("container");
+
 function makegrid() {
   for (let i = 0; i < 256; i++) {
-    let cells = document.createElement("div");
-    container.appendChild(cells)
+    let cell = document.createElement("div");
+    cell.classList.add("cell");
+    container.appendChild(cell)
   }
 }
 
 makegrid(256);
+
+const cells = document.querySelectorAll(".cell");
+
+  cells.forEach(cell => {
+    cell.addEventListener("mouseover", () => {
+      if (!cell.classList.contains("clicked")) {
+      cell.style.backgroundColor = "black";
+      }
+    });
+
+    cell.addEventListener("mouseout", () => {
+      if (!cell.classList.contains("clicked")) {
+          cell.style.backgroundColor = "";
+      }
+    });
+
+    cell.addEventListener("click", (event) => {
+      if (event.button === 0) {
+        if (cell.classList.contains("clicked")) {
+            cell.style.backgroundColor = "";
+            cell.classList.remove("clicked");
+        } else {
+            cell.style.backgroundColor = "black";
+            cell.classList.add("clicked");
+        }
+      }
+    });
+  });
+});
 
 </script>
 </body>
