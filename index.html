@@ -5,6 +5,7 @@
   <title>Etch-a-Sketch!</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap">
 <body>
   <div id="wrapper">
     <h1>Etch-a-Sketch</h1>
@@ -48,7 +49,7 @@ function attachEventListeners(){
      if (event.button === 0) {
         if (cell.classList.contains("clicked")) {
             cell.style.backgroundColor = "";
-           cell.classList.remove("clicked");
+            cell.classList.remove("clicked");
         } else {
            cell.style.backgroundColor = "black";
            cell.classList.add("clicked");
@@ -63,6 +64,49 @@ makeGrid(16);
 function clearGrid() {
   container.innerHTML = "";
 }
+
+function selectRandomColor() {
+  let button = document.createElement("button");
+  button.classList.add("colorbtn");
+  button.textContent = "Random Color";
+  document.getElementById("topdiv").appendChild(button);
+  button.addEventListener("click", () => {
+    const cells = document.querySelectorAll(".cell");
+    cells.forEach(cell => {
+      cell.removeEventListener("click", clickHandler);
+      cell.addEventListener("click", clickHandler);
+    });
+  });
+}
+
+function clickHandler() {
+  const randomColor = getRandomColor();
+  this.style.backgroundColor = randomColor;
+}
+
+selectRandomColor();
+
+function getRandomColor () {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function resetGrid() {
+  let button = document.createElement("button");
+  button.classList.add("resetbtn");
+  button.textContent = "Reset Grid";
+  document.getElementById("topdiv").appendChild(button);
+  button.addEventListener("click", () => {
+    container.innerHTML = "";
+    makeGrid(16);
+  });
+}
+
+resetGrid();
 
 function selectGridSize() {
   let button = document.createElement("button");

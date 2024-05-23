@@ -13,8 +13,8 @@ body {
     display: grid;
     grid-template-columns: repeat(16, 1fr);    width: 560px;
     grid-auto-rows: repeat(16, 1fr);
-    width: 560px;
-    height: 560px;
+    width: 500px;
+    height: 500px;
     border: 3px solid black;
     overflow: hidden;
     margin-top: 10px;
@@ -27,7 +27,7 @@ body {
 
 #topdiv {
     position: relative;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 #wrapper {
@@ -37,5 +37,15 @@ body {
 
 h1 {
     margin-top: 0px;
-    margin-bottom: 1px;
+    margin-bottom: -10px;
+    font-family: Londrina Sketch, serif;
+    font-style: normal;
+    font-size: 400%;
+}
+
+.gridbtn, .colorbtn, .resetbtn {
+    font-family: Londrina Sketch, serif;
+    font-size: 180%;
+    font-weight: bolder;
+    margin-right: 3px;
 }
