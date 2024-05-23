@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="topdiv"></div>
 
   <div id="container">
     
@@ -17,43 +18,65 @@
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("container");
 
-function makegrid() {
-  for (let i = 0; i < 256; i++) {
+function makeGrid(gridSize) {
+  for (let i = 0; i < gridSize * gridSize; i++) {
     let cell = document.createElement("div");
     cell.classList.add("cell");
     container.appendChild(cell)
   }
+container.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+container.style.gridTemplateRows = `repead(${gridSize}, 1fr)`;
+attachEventListeners();
 }
 
-makegrid(256);
-
-const cells = document.querySelectorAll(".cell");
+function attachEventListeners(){
+  const cells = document.querySelectorAll(".cell");
 
   cells.forEach(cell => {
     cell.addEventListener("mouseover", () => {
       if (!cell.classList.contains("clicked")) {
       cell.style.backgroundColor = "black";
       }
-    });
+   });
 
-    cell.addEventListener("mouseout", () => {
+   cell.addEventListener("mouseout", () => {
       if (!cell.classList.contains("clicked")) {
           cell.style.backgroundColor = "";
-      }
-    });
+     }
+   });
 
-    cell.addEventListener("click", (event) => {
-      if (event.button === 0) {
+   cell.addEventListener("click", (event) => {
+     if (event.button === 0) {
         if (cell.classList.contains("clicked")) {
             cell.style.backgroundColor = "";
-            cell.classList.remove("clicked");
+           cell.classList.remove("clicked");
         } else {
-            cell.style.backgroundColor = "black";
-            cell.classList.add("clicked");
+           cell.style.backgroundColor = "black";
+           cell.classList.add("clicked");
         }
       }
-    });
+   });
+ });
+}
+
+makeGrid(16);
+
+function selectGridSize() {
+  let button = document.createElement("button");
+  button.classList.add("gridbtn");
+  button.textContent = "Choose Grid Size";
+  document.getElementById("topdiv").appendChild(button);
+  button.addEventListener("click", () => {
+    const gridSize = prompt("Enter grid size");
+    if (gridSize) {
+      container.innerHTML = "";
+      makeGrid(parseInt(gridSize));
+    }
   });
+}
+
+  selectGridSize();
+
 });
 
 </script>

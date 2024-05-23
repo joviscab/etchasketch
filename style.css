@@ -23,3 +23,9 @@ body {
     border: 1px solid black;
     box-sizing: border-box;
 }
+
+#topdiv {
+    position: absolute;
+    top: 10px;
+
+}
