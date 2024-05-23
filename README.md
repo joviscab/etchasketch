@@ -6,7 +6,7 @@ Hello, my name is Joviscab and this is part of my learning to code journey!
 
 This is the fourth project called Etch-a-Sketch, that is part of the Foundations Course of The Odin Project. The idea of this project is to put to practice all the Javascript knowledge that I have acquired until now. In this project I am going to build a Etch-a-Sketch painting game, following the instructions of Odin's lesson!
 
-([Link to the live project](https://joviscab.github.io/etchasketch/))
+[Link to the live project](https://joviscab.github.io/etchasketch/)
 
 ## Skills
 
