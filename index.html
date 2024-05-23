@@ -1,19 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
   <meta charset="UTF-8">
   <title>Etch-a-Sketch!</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Etch-a-Sketch</h1>
-
   <div id="container">
-
+    
   </div>
 
-  <script>
-  
+
+<script>
+
+function makegrid() {
+  for (let i = 0; i < 256; i++) {
+    let cells = document.createElement("div");
+    container.appendChild(cells)
+  }
+}
+
+makegrid(256);
+
 </script>
 </body>
 </html>
