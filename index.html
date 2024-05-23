@@ -60,16 +60,23 @@ function attachEventListeners(){
 
 makeGrid(16);
 
+function clearGrid() {
+  container.innerHTML = "";
+}
+
 function selectGridSize() {
   let button = document.createElement("button");
   button.classList.add("gridbtn");
   button.textContent = "Choose Grid Size";
   document.getElementById("topdiv").appendChild(button);
   button.addEventListener("click", () => {
-    const gridSize = prompt("Enter grid size");
-    if (gridSize) {
-      container.innerHTML = "";
-      makeGrid(parseInt(gridSize));
+    let gridSize = prompt("Enter grid size (maximum 100):");
+    gridSize = parseInt(gridSize);
+    if (gridSize && gridSize <= 100) {
+      clearGrid();
+      makeGrid(gridSize);
+    } else {
+      alert("Please enter a valid grid size (maximum 100).");
     }
   });
 }
